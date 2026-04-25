@@ -1,0 +1,56 @@
+import java.util.Stack;
+import java.util.Scanner;
+
+public class MahasiswaDemo15 {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        int pilih;
+        StackTugasMahasiswa15 stack = new StackTugasMahasiswa15(5);
+        do {
+            System.out.println("\nMenu:");
+            System.out.println("1. Mengumpulkan tugas");
+            System.out.println("2. Menilai tugas");
+            System.out.println("3. Melihat tugas teratas");
+            System.out.println("4. Melihat daftar tugas");
+            System.out.println("Pilih: ");
+            pilih = scan.nextInt();
+            scan.nextLine(); 
+            switch (pilih) {
+                case 1:
+                    System.out.println("Nama: ");
+                    String nama = scan.nextLine();
+                    System.out.println("NIM: ");    
+                    String nim = scan.nextLine();
+                    System.out.println("Kelas: ");
+                    String kelas = scan.nextLine();
+                    Mahasiswa15 mhs = new Mahasiswa15(nama, nim, kelas);
+                    stack.push(mhs);
+                    System.out.printf("Tugas %s berhasil dikumpulkan!", mhs.nama);
+                    break;
+                case 2:
+                    Mahasiswa15 dinilai = stack.pop();   
+                    if (dinilai != null) {
+                        System.out.println("Menilai tugas dari " + dinilai.nama);
+                        System.out.println("Masukkan nilai (0-100): ");
+                        int nilai = scan.nextInt();
+                        dinilai.tugasDinilai(nilai);
+                        System.out.printf("Nilai Tugas %s adalah %d\n" , dinilai.nama, nilai);    
+                    }
+                    break;
+                case 3:
+                    Mahasiswa15 lihat = stack.peek();
+                    if (lihat != null) {
+                        System.out.println("Tugas terakhir dikumpulkan oleh " + lihat.nama);
+                    }
+                    break;
+                case 4:
+                    System.out.println("Daftar semua tugas");
+                    System.out.println("Nama\tNIM\tKelas");
+                    stack.print();
+                    break;
+                default:
+                    break;
+            }
+        }while (pilih >= 1 && pilih <= 4);
+    }
+}
