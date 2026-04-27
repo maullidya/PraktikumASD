@@ -8,7 +8,7 @@ public class StackTugasMahasiswa15 {
         stack = new Mahasiswa15[size];
         top = -1;
     }
-
+ 
     public boolean isFull() {
         if (top == size - 1) {
             return true;
@@ -59,4 +59,17 @@ public class StackTugasMahasiswa15 {
             System.out.println(stack[i].nama + "\t" + stack[i].nim + "\t" + stack[i].kelas);
         }
     }
+
+    public Mahasiswa15 peekBawah() {
+    if (!isEmpty()) {
+        return stack[0];
+    } else {
+        System.out.println("Stack kosong!");
+        return null;
+    }
+}
+
+public int hitungTugas() {
+    return top + 1;
+}
 }
